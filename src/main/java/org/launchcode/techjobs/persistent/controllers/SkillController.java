@@ -18,6 +18,11 @@ public class SkillController{
     @Autowired
     private SkillRepository skillRepository;
 
+    @RequestMapping("")
+    public String index(Model model){
+        model.addAttribute("skills", skillRepository.findAll());
+        return "index";
+    }
     @GetMapping
     public String displaySkills(Model model) {
         model.addAttribute("skills", skillRepository.findAll());
@@ -30,7 +35,7 @@ public class SkillController{
     }
 
     @PostMapping("add")
-    public String processAddSkillsForm(@ModelAttribute @Valid Skill newSkill,
+    public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
