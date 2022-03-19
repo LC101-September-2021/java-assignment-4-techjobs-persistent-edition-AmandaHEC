@@ -18,7 +18,6 @@ public abstract class AbstractEntity {
 
     @NotNull(message = "Name is required.")
     @Size(min = 1, max =255)
-    @NotNull
     private String name;
 
     public int getId() {
